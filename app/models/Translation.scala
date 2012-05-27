@@ -12,13 +12,7 @@ import se.radley.plugin.salat._
  * Date: 5/22/12 11:19 AM
  */
 
-import com.novus.salat.dao._
-
-case class Translation(
-                        id: ObjectId,
-                        english: String,
-                        french: List[String]
-                        )
+case class Translation(_id: ObjectId, english: String, french: List[String])
 
 object TranslationDAO extends SalatDAO[Translation, ObjectId](
   collection = MongoConnection()("translationsdb")("translations")

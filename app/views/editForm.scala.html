@@ -10,9 +10,9 @@
 }
 }
 
-    <h1>Edit translation</h1>
-
 @main {
+
+<h1>Edit translation</h1>
 
 @form(routes.Application.update(id)) {
         <fieldset>
@@ -60,8 +60,6 @@
     // translation.french[0]
     // translation.french[1]
     // ...
-    //
-    // This is probably not the easiest way to do it. A jQuery plugin would help.
 
     var renumber = function(french) {
         $('div.french > div.fr > div.input > input').each(function(i) {

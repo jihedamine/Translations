@@ -4,10 +4,6 @@
 
 @main {
 
-    <div id="actions">
-        <a class="right btn success" id="add" href="@routes.Application.create()">Add a new translation</a>
-    </div>
-
     <h1>@Messages("translations.list.title", translations.size)</h1>
 
     @flash.get("success").map { message =>
@@ -30,9 +26,9 @@
                 @translations.map {
                     case (translation) => {
                         <tr class="translation">
-                            @form(routes.Application.delete(translation.id.toString)) {
+                            @form(routes.Application.delete(translation._id.toString)) {
                             <td>
-                                <a href="@routes.Application.edit(translation.id.toString)">@translation.english</a></td>
+                                <a href="@routes.Application.edit(translation._id.toString)">@translation.english</a></td>
                             </td>
                             <td>
                                 @translation.french.mkString(" - ")

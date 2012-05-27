@@ -11,14 +11,15 @@
     <body>
         
         <header class="topbar">
-            <h1 class="fill">
-                <a href="@routes.Application.index()">
-                    Translations memorizer
-                </a>
-            </h1>
+            <h5 class="fill">
+                <a class="vmargin" href="@routes.Application.index()">Translations list</a>
+                <a class="vmargin" href="@routes.Application.create()">Add a new translation</a>
+                <a class="vmargin" href="@routes.Application.quizz()">Take the quizz!</a>
+            </h5>
         </header>
         
         <section id="main">
+            <br/>
             @content
         </section>
         

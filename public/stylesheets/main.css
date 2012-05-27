@@ -53,22 +53,6 @@ body {
     color: #888;
 }
 
-.profile {
-    margin-left: 32px;
-}
-
-.profile:first-child > .danger {
-    display: none;
-}
-
-.phones label {
-    display: none;
-}
-
-.phones div:first-child label {
-    display: inline-block;
-}
-
 .manage {
     margin-left: 32px;
     margin-bottom: 20px;
@@ -80,4 +64,13 @@ body {
 
 .right {
     float: right;
+}
+
+.vmargin {
+    margin: 5px; 0px;
+}
+
+.answer {
+    color: green;
+    font-weight: bold;
 }

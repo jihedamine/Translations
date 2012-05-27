@@ -1,0 +1,34 @@
+@(english: String, french: String, propositions: List[String])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@main {
+<input type="hidden" id="french" value="@french"/>
+<h1>Quizz page</h1>
+<h4>What's the meaning of @english ?</h4>
+
+<div class="answers">
+
+
+@propositions.map { prop => <div class="prop"><input type="radio" name="answers" value="@prop">@prop</input></div><br/>}
+
+        <a class="checkAnswer btn success">Check answer</a>
+
+        <a class="btn success" href="@routes.Application.quizz()">Another quizz!</a>
+
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    $('.checkAnswer').live('click', function(e) {
+        $('div.prop > input').each(function(i) {
+            if ($(this).attr('value') == document.getElementById('french').value) {
+                $(this).parent('.prop').attr('class', 'answer')
+            }
+        })
+    })
+
+
+</script>
+
+}

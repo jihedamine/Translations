@@ -2,15 +2,18 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Default path will just redirect to the translations list
+# Redirects to translations list
 GET     /                           controllers.Application.index
 
+# Quizz page
+GET     /translations/quizz         controllers.Application.quizz
+
 # Translations list
-GET     /translations               controllers.Application.list
+GET     /translations/               controllers.Application.list
 
 # Add translation
 GET     /translations/new            controllers.Application.create
-POST    /translations                controllers.Application.save
+POST    /translations/               controllers.Application.save
 
 # Edit existing computer
 GET     /translations/:id            controllers.Application.edit(id:String)
