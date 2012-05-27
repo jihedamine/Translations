@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Default path will just redirect to the translations list
+GET     /                           controllers.Application.index
+
+# Translations list
+GET     /translations               controllers.Application.list
+
+# Add translation
+GET     /translations/new            controllers.Application.create
+POST    /translations                controllers.Application.save
+
+# Edit existing computer
+GET     /translations/:id            controllers.Application.edit(id:String)
+POST    /translations/:id            controllers.Application.update(id:String)
+
+# Delete a translation
+POST    /translations/:id/delete     controllers.Application.delete(id:String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+

@@ -1,0 +1,5 @@
+Webapp featuring CRUD operations on a set of <english word, french translations list>.
+
+Using play 2.0, scala, mongodb, casbah and salat.
+
+Based on the play 2 sample application and bjartek's fork (https://github.com/bjartek/computer-database-mongo).

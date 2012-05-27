@@ -1,0 +1,56 @@
+@(translations: List[Translation])(implicit flash: play.api.mvc.Flash)
+
+@import helper._
+
+@main {
+
+    <div id="actions">
+        <a class="right btn success" id="add" href="@routes.Application.create()">Add a new translation</a>
+    </div>
+
+    <h1>@Messages("translations.list.title", translations.size)</h1>
+
+    @flash.get("success").map { message =>
+        <div class="alert-message warning">
+            <strong>Done!</strong> @message
+        </div>
+    }
+
+    @Option(translations).filterNot(_.isEmpty).map { translations =>
+        
+        <table class="translations zebra-striped">
+            <thead>
+                <tr>
+                    <th>English</th>
+                    <th>French</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @translations.map {
+                    case (translation) => {
+                        <tr class="translation">
+                            @form(routes.Application.delete(translation.id.toString)) {
+                            <td>
+                                <a href="@routes.Application.edit(translation.id.toString)">@translation.english</a></td>
+                            </td>
+                            <td>
+                                @translation.french.mkString(" - ")
+                                <input type ="submit" value="Remove" class="removeTranslation btn danger right"/>
+                            </td>
+                            }
+                        </tr>
+                    }
+                }
+            </tbody>
+
+        </table>
+    }.getOrElse {
+        <div class="well">
+            <em>Nothing to display</em>
+        </div>
+    }
+
+}
+
+            

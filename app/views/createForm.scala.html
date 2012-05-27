@@ -1,0 +1,89 @@
+@(translationForm: Form[Translation])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@title = { Add a new translation }
+
+@frenchField(field: Field, className: String = "french_element") = {
+    @input(field, '_label -> "French translation", '_class -> className) { (id, name, value, _) =>
+    <input type="text" name="@name" value="@value">
+    <a class="removeFrench btn danger">Remove</a>
+    }
+}
+
+@main {
+    @if(translationForm.hasErrors) {
+        <div class="alert-message error">
+            <p><strong>Oops</strong> Please fix all errors</p>
+        </div>
+    }
+
+@form(routes.Application.save) {
+    <fieldset>
+
+        @inputText(translationForm("english"), '_label -> "English word")
+
+        <div class="french">
+
+            @repeat(translationForm("french"), min = 0) { fr =>
+                @frenchField(fr)
+            }
+
+            @**
+            * Keep a hidden block that will be used as template for Javascript copy code
+            **@
+            @frenchField(
+                translationForm("french[x]"),
+                className = "french_template"
+            )
+
+            <div class="clearfix">
+                <div class="input">
+                    <a class="addFrench btn success">Add a french translation</a>
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+
+    <div class="actions">
+        <input type="submit" value="Create this translation" class="btn primary"> or
+        <a href="@routes.Application.index()" class="btn">Cancel</a>
+    </div>
+}
+
+    <script type="text/javascript" charset="utf-8">
+        // -- renumber fields
+
+        // Rename fields to have a coherent payload like:
+        // translation.french[0]
+        // translation.french[1]
+        // ...
+        //
+        // This is probably not the easiest way to do it. A jQuery plugin would help.
+
+        var renumber = function(french) {
+            $('div.french > div.fr > div.input > input').each(function(i) {
+                    $(this).attr('name', $(this).attr('name').replace(/french\[.+\]/g, 'french[' + i + ']'))
+            })
+        }
+
+
+        $('.removeFrench').live('click', function(e) {
+            var french = $(this).parents('.french')
+            $(this).parents('.fr').remove()
+            renumber(french)
+        })
+
+        $('.addFrench').live('click', function(e) {
+            var french = $(this).parents('.french')
+            var template = $('.french_template', french)
+            template.before('<div class="clearfix fr">' + template.html() + '</div>')
+            renumber(french)
+        })
+
+
+    </script>
+
+}

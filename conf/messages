@@ -1,0 +1,3 @@
+# Messages
+
+translations.list.title={0,choice,0#No translations|1#One translation|1<{0,number,integer} translations} found
