@@ -127,7 +127,6 @@ object Application extends Controller {
       if (! wrongAnswer.eq("")) {propositions.append(wrongAnswer)}
     }
 
-    println(propositions.toList)
     Ok(html.quizz(quizzTranslation.english, correctAnswer, Random.shuffle(propositions.toList)))
   }
 
