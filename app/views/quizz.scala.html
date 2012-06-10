@@ -6,12 +6,14 @@
 @main {
 <input type="hidden" id="french" value="@french"/>
 <h1>Quizz page</h1>
+<div class="question">
+
 <h4>What's the meaning of @english ?</h4>
 
-<div class="answers">
+</div>
 
-
-@propositions.map { prop => <div class="prop"><input type="radio" name="answers" value="@prop">@prop</input></div><br/>}
+<div class="propositions">
+@propositions.map { prop => <div class="prop"><input type="radio" id="answers" name="answers" value="@prop">  @prop</input></div><br/>}
 
         <a class="checkAnswer btn success">Check answer</a>
 
@@ -22,8 +24,14 @@
 <script type="text/javascript" charset="utf-8">
     $('.checkAnswer').live('click', function(e) {
         $('div.prop > input').each(function(i) {
-            if ($(this).attr('value') == document.getElementById('french').value) {
-                $(this).parent('.prop').attr('class', 'answer')
+            var correctAnswer = document.getElementById('french').value
+            if ($(this).attr('value') == correctAnswer) {
+                var userAnswer = $('input[name=answers]:checked').val()
+                if (userAnswer == correctAnswer) {
+                    $(this).parent('.prop').attr('class', 'answer')
+                } else {
+                    $(this).parent('.prop').attr('class', 'badAnswer')
+                }
             }
         })
     })
