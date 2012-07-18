@@ -1,8 +1,8 @@
 package models
 
+import collection.immutable.List
 import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.MongoConnection
-import com.novus.salat._
 import com.novus.salat.dao._
 import se.radley.plugin.salat._
 
@@ -35,11 +35,21 @@ object Translation {
   }
 
   def remove(id: String) {
-    TranslationDAO.remove(find(id))
+    find(id).map {
+      TranslationDAO.remove(_)
+    }
   }
 
-  def find(id: String) : Translation = {
-    TranslationDAO.find(ref = MongoDBObject("_id" -> new ObjectId(id))).toList(0)
+  def find(id: String) : Option[Translation] = {
+    val translations = TranslationDAO.find(ref = MongoDBObject("_id" -> new ObjectId(id))).toList
+    translations.size match {
+      case 1 => Some(translations(0))
+      case _ => None
+    }
+  }
+
+  def exists(name: String, value: String) : Boolean = {
+    TranslationDAO.find(ref = MongoDBObject(name -> value)).toList.size > 0
   }
 
 }

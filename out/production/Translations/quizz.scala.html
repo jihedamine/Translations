@@ -4,10 +4,9 @@
 @import helper.twitterBootstrap._
 
 @main {
-
-  <input type="hidden" id="french" value="@french"/>
-  <h1>Quizz page</h1>
-  <div class="leftPadded10">
+<input type="hidden" id="french" value="@french"/>
+<h1>Quizz page</h1>
+<div class="leftPadded10">
 
     <h4>What's the meaning of @english ?</h4>
 
@@ -16,9 +15,9 @@
         <a class="checkAnswer btn success">Check answer</a>
         <a class="btn success" href="@routes.Application.quizz()">Another quizz!</a>
 
-  </div>
+</div>
 
-  <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
     $('.checkAnswer').live('click', function(e) {
         console.log('checking answer')
         $('div.prop > input').each(function(i) {
@@ -33,6 +32,8 @@
             }
         })
     })
-  </script>
+
+
+</script>
 
 }

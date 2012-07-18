@@ -15,6 +15,10 @@ GET     /translations/               controllers.Application.list
 GET     /translations/new            controllers.Application.create
 POST    /translations/               controllers.Application.save
 
+# Import translations file
+GET     /translations/import         controllers.Application.importTranslations
+POST    /translations/upload         controllers.Application.upload
+
 # Edit existing computer
 GET     /translations/:id            controllers.Application.edit(id:String)
 POST    /translations/:id            controllers.Application.update(id:String)

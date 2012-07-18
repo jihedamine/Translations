@@ -5,17 +5,18 @@
 
 @frenchField(field: Field, className: String = "french_element") = {
     @input(field, '_label -> "French translation", '_class -> className) { (id, name, value, _) =>
-      <input type="text" name="@name" value="@value">
-      <a class="removeFrench btn danger">Remove</a>
-    }
+    <input type="text" name="@name" value="@value">
+    <a class="removeFrench btn danger">Remove</a>
+}
 }
 
 @main {
 
-  <h1>Edit translation</h1>
+<h1>Edit translation</h1>
 
-  @form(routes.Application.update(id)) {
+@form(routes.Application.update(id)) {
         <fieldset>
+        
             @inputText(translationForm("english"), '_label -> "English word")
 
             <div class="french">
@@ -42,15 +43,17 @@
                 </div>
 
             </div>
+        
         </fieldset>
         
         <div class="actions">
             <input type="submit" value="Save updates" class="btn primary"> or
             <a href="@routes.Application.list()" class="btn">Cancel</a>
         </div>
+        
     }
 
-  <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
     // -- renumber fields
 
     // Rename fields to have a coherent payload like:
@@ -77,6 +80,9 @@
         template.before('<div class="clearfix fr">' + template.html() + '</div>')
         renumber(french)
     })
-  </script>
+
+
+</script>
+
 
 }

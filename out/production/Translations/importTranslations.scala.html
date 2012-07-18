@@ -1,0 +1,34 @@
+@()(implicit flash: play.api.mvc.Flash)
+
+@import helper._
+
+@main {
+
+    @flash.get("success").map { message =>
+        <div class="alert-message warning">
+            <strong>Done!</strong> @message
+        </div>
+    }
+
+    <div class="leftPadded10">
+        <h3>Import translations</h3>
+
+        @form(action = routes.Application.upload, 'enctype -> "multipart/form-data") {
+        <input type="file" name="translationsFile"> <input type="submit" value="Import !">
+        }
+
+        <ul>
+            <li>The uploaded file's content must adhere to the following template:
+                <br/>
+                <pre>&lt;english-word-1&gt;=&lt;french-translation-1&gt;,&lt;french-translation-2&gt;,...,&lt;french-translation-n&gt;
+&lt;english-word-2&gt;=&lt;french-translation-1&gt;,&lt;french-translation-2&gt;,...,&lt;french-translation-n&gt;</pre>
+            </li>
+            <li>If the english word on the left side of the '=' already exists in the translations database, the line is ignored</li>
+            <br/>
+            <li>Lines that don't follow the pattern *=* are ignored</li>
+        </ul>
+
+    </div>
+}
+
+            

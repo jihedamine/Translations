@@ -69,6 +69,7 @@
             })
         }
 
+
         $('.removeFrench').live('click', function(e) {
             var french = $(this).parents('.french')
             $(this).parents('.fr').remove()
@@ -81,6 +82,7 @@
             template.before('<div class="clearfix fr">' + template.html() + '</div>')
             renumber(french)
         })
+
 
     </script>
 

@@ -49,6 +49,14 @@ body {
     border: 0;
 }
 
+.leftPadded10 {
+    padding-left: 10px;
+}
+
+.leftPadded20 {
+    padding-left: 20px;
+}
+
 .topbar p {
     color: #888;
 }
@@ -70,20 +78,14 @@ body {
     margin: 5px; 0px;
 }
 
-.answer {
+.goodAnswer {
+    padding-left: 20px;
     color: green;
     font-weight: bold;
 }
 
 .badAnswer {
+    padding-left: 20px;
     color: red;
     font-weight: bold;
-}
-
-.question {
-    padding-left: 10px;
-}
-
-.propositions {
-    padding-left: 20px;
 }
