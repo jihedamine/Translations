@@ -5,6 +5,7 @@ import com.mongodb.casbah.Imports._
 import com.mongodb.casbah.MongoConnection
 import com.novus.salat.dao._
 import se.radley.plugin.salat._
+import com.novus.salat.global._
 
 /**
  * Created with IntelliJ IDEA.
